@@ -1,4 +1,5 @@
 import React from "react";
+import { Text, Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
@@ -54,13 +55,14 @@ const Open = styled(SvgXml)`
 export const RestaurentInfo = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
-    icon,
+    icon = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9EB6eaYn-gyJd5XxgxcE0EjIAyflWAPZPRXe0PnuGt9rvnCaHphcPoyR0fbyisnioApA&usqp=CAU",
     photos = [
       "https://media.healthyfood.com/wp-content/uploads/2017/03/Sushi_in_10_steps.jpg",
     ],
     address = "100 some street",
     isOpenNow = true,
     rating = 4,
+    isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -77,7 +79,15 @@ export const RestaurentInfo = ({ restaurant = {} }) => {
             ))}
           </Rating>
           <SectionEnd>
+            {isClosedTemporarily && (
+              <Text variant="label" style={{ color: "red" }}>
+                CLOSED TEMPORARILY
+              </Text>
+            )}
+            <View style={{ paddingLeft: 16 }} />
             {isOpenNow && <Open xml={open} width={30} height={30} />}
+            <View style={{ paddingLeft: 16 }} />
+            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
