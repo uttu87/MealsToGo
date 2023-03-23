@@ -85,9 +85,9 @@ export const RestaurentInfo = ({ restaurant = {} }) => {
                 CLOSED TEMPORARILY
               </Text>
             )}
-            <Spacer variant="left.large" />
+            <Spacer position="left" size="medium" />
             {isOpenNow && <Open xml={open} width={30} height={30} />}
-            <Spacer variant="left.large" />
+            <Spacer position="left" size="medium" />
             <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
           </SectionEnd>
         </Section>
